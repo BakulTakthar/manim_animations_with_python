@@ -1,0 +1,13 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/DarwinianEvolution/3529212410_2430907441_223132457.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/DarwinianEvolution/3040924799_1141282389_4226856142.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/DarwinianEvolution/3040924799_2488071865_1796227520.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/DarwinianEvolution/3040924799_1141282389_105029948.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/DarwinianEvolution/3040924799_2247259853_4173400633.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/DarwinianEvolution/3040924799_1141282389_3736183062.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/DarwinianEvolution/3040924799_1304459123_2573212970.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/DarwinianEvolution/3040924799_1141282389_4243244336.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/DarwinianEvolution/3040924799_4202945716_2578278390.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/DarwinianEvolution/3040924799_1141282389_2039540515.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/DarwinianEvolution/3040924799_3257135228_1618664254.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/DarwinianEvolution/3040924799_1141282389_303665147.mp4'

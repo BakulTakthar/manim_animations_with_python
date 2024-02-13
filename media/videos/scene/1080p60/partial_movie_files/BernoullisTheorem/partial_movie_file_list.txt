@@ -1,0 +1,13 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/BernoullisTheorem/3529212410_2243835761_223132457.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/BernoullisTheorem/3040924799_2179330784_110281453.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/BernoullisTheorem/3040924799_721625324_1244983424.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/BernoullisTheorem/3040924799_1141282389_641768845.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/BernoullisTheorem/3040924799_2997997694_219943330.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/BernoullisTheorem/3040924799_1141282389_3862357981.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/BernoullisTheorem/3040924799_1737068127_2721947543.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/BernoullisTheorem/3040924799_1141282389_843018645.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/BernoullisTheorem/3040924799_3277568199_3879621042.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/BernoullisTheorem/3040924799_1141282389_2402304592.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/BernoullisTheorem/3040924799_356814172_1169082499.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/BernoullisTheorem/3040924799_3890345977_2967589050.mp4'
