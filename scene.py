@@ -1,56 +1,87 @@
 from manim import *
 
-class BernoullisTheorem(Scene):
+class SineCurveUnitCircle(Scene):
+    # contributed by heejin_park, https://infograph.tistory.com/230
     def construct(self):
-        # Title
-        title = Text("Bernoulli's Theorem", font_size=40)
-        title.to_edge(UP)
-        self.play(Write(title))
+        self.show_axis()
+        self.show_circle()
+        self.move_dot_and_draw_curve()
+        self.wait()
 
-        # Equations
-        equation1 = MathTex(
-            "P_1 + \\frac{1}{2}\\rho v_1^2 + \\rho g h_1 = P_2 + \\frac{1}{2}\\rho v_2^2 + \\rho g h_2"
-        )
-        equation1.next_to(title, DOWN, buff=1)
-        equation2 = MathTex(
-            "P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{Constant}"
-        )
-        equation2.next_to(equation1, DOWN, buff=0.5)
+    def show_axis(self):
+        x_start = np.array([-6,0,0])
+        x_end = np.array([6,0,0])
 
-        self.play(Write(equation1))
-        self.play(Write(equation2))
-        self.wait(2)
+        y_start = np.array([-4,-2,0])
+        y_end = np.array([-4,2,0])
 
-        # Concept
-        concept_text = Text(
-            "Bernoulli's theorem relates the pressure, velocity, \n and elevation along a streamline in a fluid flow.",
-            font_size=24,
-            color=BLUE
-        )
-        concept_text.to_corner(DL)
-        self.play(Write(concept_text))
-        self.wait(2)
+        x_axis = Line(x_start, x_end)
+        y_axis = Line(y_start, y_end)
 
-        # Key Idea
-        key_idea_text = Text(
-            "It states that the total mechanical energy per unit mass of the fluid remains constant.",
-            font_size=24,
-            color=GREEN
-        )
-        key_idea_text.to_corner(DL)
-        self.play(Transform(concept_text, key_idea_text))
-        self.wait(2)
+        self.add(x_axis, y_axis)
+        self.add_x_labels()
 
-        # Example
-        example_text = Text(
-            "For example, consider a fluid flowing through a pipe of varying diameter.",
-            font_size=24,
-            color=ORANGE
-        )
-        example_text.to_corner(DL)
-        self.play(Transform(concept_text, example_text))
-        self.wait(2)
+        self.origin_point = np.array([-4,0,0])
+        self.curve_start = np.array([-3,0,0])
 
-        # Animation End
-        self.play(FadeOut(title), FadeOut(equation1), FadeOut(equation2), FadeOut(concept_text))
-        self.wait(1)
+    def add_x_labels(self):
+        x_labels = [
+            MathTex("\pi"), MathTex("2 \pi"),
+            MathTex("3 \pi"), MathTex("4 \pi"),
+        ]
+
+        for i in range(len(x_labels)):
+            x_labels[i].next_to(np.array([-1 + 2*i, 0, 0]), DOWN)
+            self.add(x_labels[i])
+
+    def show_circle(self):
+        circle = Circle(radius=1)
+        circle.move_to(self.origin_point)
+        self.add(circle)
+        self.circle = circle
+
+    def move_dot_and_draw_curve(self):
+        orbit = self.circle
+        origin_point = self.origin_point
+
+        dot = Dot(radius=0.08, color=YELLOW)
+        dot.move_to(orbit.point_from_proportion(0))
+        self.t_offset = 0
+        rate = 0.25
+
+        def go_around_circle(mob, dt):
+            self.t_offset += (dt * rate)
+            # print(self.t_offset)
+            mob.move_to(orbit.point_from_proportion(self.t_offset % 1))
+
+        def get_line_to_circle():
+            return Line(origin_point, dot.get_center(), color=BLUE)
+
+        def get_line_to_curve():
+            x = self.curve_start[0] + self.t_offset * 4
+            y = dot.get_center()[1]
+            return Line(dot.get_center(), np.array([x,y,0]), color=YELLOW_A, stroke_width=2 )
+
+
+        self.curve = VGroup()
+        self.curve.add(Line(self.curve_start,self.curve_start))
+        def get_curve():
+            last_line = self.curve[-1]
+            x = self.curve_start[0] + self.t_offset * 4
+            y = dot.get_center()[1]
+            new_line = Line(last_line.get_end(),np.array([x,y,0]), color=YELLOW_D)
+            self.curve.add(new_line)
+
+            return self.curve
+
+        dot.add_updater(go_around_circle)
+
+        origin_to_circle_line = always_redraw(get_line_to_circle)
+        dot_to_curve_line = always_redraw(get_line_to_curve)
+        sine_curve_line = always_redraw(get_curve)
+
+        self.add(dot)
+        self.add(orbit, origin_to_circle_line, dot_to_curve_line, sine_curve_line)
+        self.wait(8.5)
+
+        dot.remove_updater(go_around_circle)

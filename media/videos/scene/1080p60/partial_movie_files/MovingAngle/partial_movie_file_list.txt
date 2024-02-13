@@ -1,0 +1,6 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/MovingAngle/3529212410_123554531_3591677354.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/MovingAngle/3040924799_1844281646_1285545720.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/MovingAngle/3040924799_849294087_2214769358.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/MovingAngle/3040924799_2710703305_3923367056.mp4'
+file 'file:C:/Users/Bakul/code/manim/media/videos/scene/1080p60/partial_movie_files/MovingAngle/3040924799_2506509665_290355235.mp4'
