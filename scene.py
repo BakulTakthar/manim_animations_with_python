@@ -31,3 +31,12 @@ class SchrodingerEquation(Scene):
         self.play(Write(explanation))
 
         self.wait(3)
+        self.interactive_embed()
+
+
+'''
+-pqh = for high quality video output (1080p 60fps)
+
+-pql = for low quality video output (480p 30fps)
+
+'''
