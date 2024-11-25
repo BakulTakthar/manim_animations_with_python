@@ -11,6 +11,7 @@ TODO
 """
 # To enable OpenGL rendering:
 config.renderer = "opengl"
+config.background_color=WHITE
 
 class ThreeDGridWithLabels(ThreeDScene):
     def construct(self):
@@ -24,18 +25,39 @@ class ThreeDGridWithLabels(ThreeDScene):
         vector_d = Arrow(start=ORIGIN, end=np.cross(np.array(vector_a.end), np.array(vector_c.end)), buff=0, color=RED)
         vector_d.set_stroke(width=7)   
         
+        #? declaring the scalar triple product (axb).c
+        
+        #! vector_triple_product = np.dot((np.cross(np.array(vector_a.end), np.array(vector_b.end))),np.array(vector_c.end))
+        
         #? making the labels
         label_a = MathTex(r"\overrightarrow{a}").move_to(vector_a.end+[0, 0, 0.2]).rotate(PI/2, axis=RIGHT).rotate(PI, axis=IN)
         label_b = MathTex(r"\overrightarrow{b}").move_to(vector_b.end+[0, 0, 0.2]).rotate(PI/2, axis=RIGHT).rotate(PI, axis=IN)
         label_c = MathTex(r"\overrightarrow{c}").move_to(vector_c.end+[0, 0, 0.2]).rotate(PI/2, axis=RIGHT).rotate(PI, axis=IN)
         label_d = MathTex(r"\overrightarrow{d}").move_to(vector_d.end+[-0.2, 0.2, 0.2]).rotate(PI/2, axis=RIGHT).rotate(PI, axis=IN)
         label_d.set_color(RED)
+        
+        label_a.set_color(BLACK)
+        label_b.set_color(BLACK)
+        label_c.set_color(BLACK)
         #? adding them to the render    
         
         self.add(vector_a, vector_b, vector_c)
         self.add(label_a, label_b, label_c)
         self.wait(2)
         self.add(vector_d, label_d)
+        
+        # self.add(
+        #     Rectangle(vector_a.end, vector_b.end,).set_opacity(0.5)
+        # )
+        # Display volume as text
+        # volume_text = Text(f"Volume = {np.abs(np.dot(vector_a, np.cross(vector_b, vector_c))):.2f}")
+        # volume_text.shift(3 * UP)
+        # self.add_fixed_in_frame_mobjects(volume_text)  # Keeps text static
+        # self.add(volume_text)
+
+        # Animate rotation to view the 3D structure
+        self.begin_ambient_camera_rotation(rate=0.1)
+        self.wait(5)
         
         # Set up the 3D axes
         axes = ThreeDAxes(
@@ -44,8 +66,10 @@ class ThreeDGridWithLabels(ThreeDScene):
             z_range=[-5, 5, 1],  # Range for z-axis
             x_length=10,         # Length of the x-axis
             y_length=10,         # Length of the y-axis
-            z_length=10,         # Length of the z-axis
+            z_length=10,
+            # Length of the z-axis
         )
+        axes.set_color(BLACK)
 
         # Create grid lines for x-y, y-z, and x-z planes
         x_y_grid = NumberPlane(
