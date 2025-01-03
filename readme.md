@@ -22,3 +22,8 @@ to change it to white
 config.background_color = BLACK 
 ```
 to change it back to black
+
+the color code of the iconic sepia tone
+```
+config.background_color = '#f5f3ed'
+```
