@@ -37,7 +37,7 @@ class MainScene(ThreeDScene):
         l1_label = MathTex("l_{1} : r_{1}=a_{1}+\lambda d_{1}", color=BLACK).move_to(
             line1
         )
-        l1_label.rotate(3 * (PI / 2), IN).rotate(PI / 2, UP).scale(0.7)
+        l1_label.rotate(3 * (PI / 2), IN).rotate(PI / 2, UP).scale(0.5)
 
         line2 = ParametricFunction(
             lambda t: a2 + t * d2,  # Line equation
@@ -49,7 +49,7 @@ class MainScene(ThreeDScene):
         l2_label = MathTex("l_{2} : r_{2}=a_{2}+\lambda d_{2}", color=BLACK).move_to(
             line2
         )
-        l2_label.rotate(3 * (PI / 2), IN).rotate(PI / 2, UP).scale(0.7)
+        l2_label.rotate(3 * (PI / 2), IN).rotate(PI / 2, UP).scale(0.5)
 
         # # Defining the shortest distance line
         #! TODO
@@ -66,6 +66,9 @@ class MainScene(ThreeDScene):
         p1 = a1 + lam1 * d1  # Closest point on Line 1
         p2 = a2 + lam2 * d2  # Closest point on Line 2
         p0 = (p1 + p2) / 2
+        
+        p0_label = MathTex('P_{0}', color=BLACK)
+        p0_dot = Dot3D(p0, radius=0.1, color = BLACK)
         # diff = a1 - a2
         # lambda_val = np.dot(diff, d_shortest) / np.linalg.norm(d_shortest)**2
         # p_shortest = a1 - lambda_val * d_shortest
@@ -137,6 +140,8 @@ class MainScene(ThreeDScene):
             .rotate(3 * PI / 2, LEFT)
         )
         l1_label.move_to(line1)
+        
+        Arrow3D
 
         # Add everything to the scene
         self.add(
@@ -151,7 +156,9 @@ class MainScene(ThreeDScene):
             line2,
             line3,
         )
-        self.add(p1_point, p2_point, l1_label, l2_label)
+        # self.add(p1_point, p2_point, l1_label, l2_label)
+        
+        self.wait(5)
 
         self.play(
             Create(axes),
@@ -159,12 +166,15 @@ class MainScene(ThreeDScene):
             Create(y_label),
             Create(z_label),
             Create(line1),
-            Create(line2),
-            Create(line3),
-            # Create(a1_vector)
-            # Create(p1_point, p2_point),
-            # Create(shortest_distance_line)
+            Write(l1_label)
         )
+        
+        self.wait(2)
+        
+        self.play(Create(line2),
+            Write(l2_label))
+        
+        
         # Animate the line
 
         # self.play(Create(shortest_line))
