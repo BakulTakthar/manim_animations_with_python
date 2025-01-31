@@ -17,14 +17,23 @@ class MainScene(ThreeDScene):
         # Define line1 parameters
         a1 = np.array([2, 3, 4])  # Start point
         d1 = np.array([5, 5, 5])  # Direction vector
-        lam_min, lam_max = -4, 4  # Range of the parameter lambda
+        lam_min, lam_max = -4, 4 
+        
+        # a1_v = Arrow3D(ORIGIN,[2, 3, 4])
+        # d1_v = Arrow3D(ORIGIN, d1)
+        # Range of the parameter lambda
 
         # a1_vector = Arrow3D(start=np.array([0,0,0]), end=np.array([2,3,4]), resolution=8)
         # defining the parameters of line2
         a2 = np.array([1, 1, 1])
         d2 = np.array([2, 6, 3])
+        
+        # a2_v = Arrow3D(ORIGIN, a2)
+        # d2_v = Arrow3D(ORIGIN, d2)
 
         d_prependicular = np.cross(d1, d2)
+        
+        # d_p_v = Arrow3D(ORIGIN, d_prependicular)
 
         # Use ParametricFunction for a line
         line1 = ParametricFunction(
@@ -104,6 +113,7 @@ class MainScene(ThreeDScene):
             x_length=10,
             y_length=10,
             z_length=10,
+            color= BLACK
         )
         axes.set_color(BLACK)
 
@@ -111,7 +121,7 @@ class MainScene(ThreeDScene):
         x_y_grid = NumberPlane(
             x_range=[-5, 5, 1],
             y_range=[-5, 5, 1],
-            axis_config={"stroke_color": WHITE},
+            axis_config={"stroke_color": BLACK},
             background_line_style={
                 "stroke_color": BLUE_D,
                 "stroke_width": 1,
@@ -125,59 +135,72 @@ class MainScene(ThreeDScene):
 
         # Create labels for x, y, z axes
         x_label = (
-            MathTex("x")
+            MathTex("x", color = BLACK)
             .move_to(axes.c2p(5, 0, 0) + np.array([0.3, 0, 0]))
             .rotate(3 * PI / 2, LEFT)
         )
         y_label = (
-            MathTex("y")
+            MathTex("y", color = BLACK)
             .move_to(axes.c2p(0, 5, 0) + np.array([0, 0.3, 0]))
             .rotate(3 * PI / 2, LEFT)
         )
         z_label = (
-            MathTex("z")
+            MathTex("z", color = BLACK)
             .move_to(axes.c2p(0, 0, 5) + np.array([0, 0, 0.3]))
             .rotate(3 * PI / 2, LEFT)
         )
         l1_label.move_to(line1)
-        
-        Arrow3D
 
         # Add everything to the scene
-        self.add(
-            x_y_grid,
-            y_z_grid,
-            x_z_grid,
-            axes,
-            x_label.set_color(BLACK),
-            y_label.set_color(BLACK),
-            z_label.set_color(BLACK),
-            line1,
-            line2,
-            line3,
-        )
+        # self.add(
+        #     x_y_grid,
+        #     y_z_grid,
+        #     x_z_grid,
+        #     axes,
+        #     x_label.set_color(BLACK),
+        #     y_label.set_color(BLACK),
+        #     z_label.set_color(BLACK),
+        #     line1,
+        #     line2,
+        #     line3,
+        # )
         # self.add(p1_point, p2_point, l1_label, l2_label)
         
         self.wait(5)
 
         self.play(
             Create(axes),
+            Create(x_y_grid),
+            Create(y_z_grid),
+            Create(x_z_grid),
             Create(x_label),
             Create(y_label),
             Create(z_label),
             Create(line1),
             Write(l1_label)
         )
+        self.add(line1)
         
         self.wait(2)
         
         self.play(Create(line2),
             Write(l2_label))
+        self.add(line2)
         
         
+        self.wait(2)
+        
+        self.play(Create(line3))
+        self.add(line3)
+        
+        self.wait(2)
+        
+        self.play(Create(p1_point),Create(p2_point))
         # Animate the line
 
         # self.play(Create(shortest_line))
         # self.play(Create(short_dist))
         self.wait(5)
         self.interactive_embed()
+
+# scene = MainScene()
